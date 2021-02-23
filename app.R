@@ -1,6 +1,27 @@
+############################################
+## Nature Based Coastal Defence shiny app ## 
+############################################
+
+
+############
+## Set up ## --------------------------------------------------------------------------------------------------------------------------
+############
+
+
+if (!require(shiny)) install.packages('shiny')
+if (!require(shinythemes)) install.packages('shinythemes')
+if (!require(leaflet)) install.packages('leaflet')
+
+library(shiny)
+library(shinythemes)
+library(leaflet)
 
 citation <- "National Centre for Coasts and Climate. In prep. Identifying opportunities for nature-based coastal defence using a shoreline suitability analysis."
 
+
+####################
+## User interface ## --------------------------------------------------------------------------------------------------------------------------
+####################
 ui <- bootstrapPage(
   navbarPage(theme = shinytheme("flatly"), collapsible = TRUE,
              HTML('<a style="text-decoration:none;cursor:default;color:#FFFFFF;" class="active" href="#">Nature-Based Coastal Defence</a>'),
@@ -89,7 +110,7 @@ ui <- bootstrapPage(
                                   ),
                                   
                                   tabPanel(h4("Case 4"),
-                                           h4("Case study location 4"),
+                                           h3("Case study location 4"),
                                            p("Reason and description of case study"),
                                            p("Paragraph descriptions"),
                                            br(),
@@ -167,8 +188,15 @@ ui <- bootstrapPage(
 )
   
   
+
+
+
+
+
+
+
   ############
-  ## Server ## -----------------------------------------------------------------------
+  ## Server ## ------------------------------------------------------------------------------------------------------------------------------------
   ############
   
 
@@ -216,7 +244,13 @@ server <- function(input,output, session){
     
   })
 }
+
+
+
+
+
+
   ###############
-  ## Shiny app ## -------------------------------------------------------------
+  ## Shiny app ## --------------------------------------------------------------------------------------------------------------------------
   ###############
   shinyApp(ui = ui, server = server)
